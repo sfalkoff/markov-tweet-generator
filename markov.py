@@ -20,23 +20,29 @@ def make_chains(corpus):
         else:
             chains_dict[key] = [value]
         #No longer in use, kindof cool: chains_dict[tuple(text_file[i : i + 2])] = list([text_file[i + 2]])
+
     return chains_dict
 
 
 def make_text(chains):
     """Takes a dictionary of markov chains and returns random text
     based off an original text."""
-    random_w = []
-    for k, v in chains.items():
-        random_num = random.randrange(len(v))
-        random_w.append(v[random_num])
-    print random_w
+
+    #no in use:
+    # random_w = []
+    # for k, v in chains.items():
+    #     random_num = random.randrange(len(v))
+    #     random_w.append(v[random_num])
+    # print random_w
     # should print a list of random words pulled from the dict values
 
-
+    random_w = ""
+    for k, v in chains.items():
+        random_num = random.randrange(len(v))
+        random_w = random_w + " " + v[random_num]
 
     #using the above data structure to generate random text
-    return "Here's some random text."
+    return random_w
 
 def main():
     args = sys.argv

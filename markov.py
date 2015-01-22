@@ -8,9 +8,16 @@ def make_chains(corpus):
     #text to open and read
     text_file = open(corpus)
     text_file = text_file.read().split()
-    print text_file
-    for word in range(len(text_file) - 2):
-        print text_file[word]
+    # print text_file
+    chains_dict = {}
+    for i in range(len(text_file) - 2):
+        chains_dict[tuple(text_file[i : i + 2])] = i + 3
+        #chains_dict[tuple(text_file[text_file[i]:text_file[i + 1]])] = text_file[i + 2]
+        # print word
+        # print text_file[word + 1]
+       # print i
+        #print text_file[i]
+    print chains_dict
     #remove white space at end of lines
     #split the text into a list of words
 

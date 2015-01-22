@@ -11,7 +11,7 @@ def make_chains(corpus):
     # print text_file
     chains_dict = {}
     for i in range(len(text_file) - 2):
-        chains_dict[tuple(text_file[i : i + 2])] = i + 3
+        chains_dict[tuple(text_file[i : i + 2])] = text_file[i + 3]
         #chains_dict[tuple(text_file[text_file[i]:text_file[i + 1]])] = text_file[i + 2]
         # print word
         # print text_file[word + 1]

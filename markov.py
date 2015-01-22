@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 
 import sys
+import random
 
 def make_chains(corpus):
     """Takes an input text as a string and returns a dictionary of
@@ -25,6 +26,15 @@ def make_chains(corpus):
 def make_text(chains):
     """Takes a dictionary of markov chains and returns random text
     based off an original text."""
+    random_w = []
+    for k, v in chains.items():
+        random_num = random.randrange(len(v))
+        random_w.append(v[random_num])
+    print random_w
+    # should print a list of random words pulled from the dict values
+
+
+
     #using the above data structure to generate random text
     return "Here's some random text."
 

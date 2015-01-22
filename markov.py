@@ -5,29 +5,22 @@ import sys
 def make_chains(corpus):
     """Takes an input text as a string and returns a dictionary of
     markov chains."""
-    #text to open and read
+
     text_file = open(corpus)
-    text_file = text_file.read().split()
-    # print text_file
+    w = text_file.read().split()
     chains_dict = {}
-    # for k, v in chains_dict.items():
-    #     if k in chains_dict:
-    #         chains_dict[k] = chains_dict + chains_dict[v]
+    
+    for i in range(len(w) - 2):
+        key = (w[i], w[i + 1])
+        value = w[i + 2]
+        
+        if key in chains_dict:
+            chains_dict[key].append(value)
+        else:
+            chains_dict[key] = [value]
+        #No longer in use, kindof cool: chains_dict[tuple(text_file[i : i + 2])] = list([text_file[i + 2]])
+    return chains_dict
 
-    for i in range(len(text_file) - 2):
-        # if k in chains_dict:
-        #     chains_dict[k] = chains_dict + chains_dict[v]
-        chains_dict[tuple(text_file[i : i + 2])] = list([text_file[i + 2]])
-    print chains_dict
-
-
-
-
-    #make a dictrionary
-    #return chains_dict
-    #dictionary will contain tuples with two words as keys and the value will be a list
-    #building the data structure 
-    # return {}
 
 def make_text(chains):
     """Takes a dictionary of markov chains and returns random text
@@ -47,7 +40,7 @@ def main():
     chain_dict = make_chains(input_text)
     random_text = make_text(chain_dict)
     # print random_text
-    print make_chains
+    print random_text
 
 if __name__ == "__main__":
     main()

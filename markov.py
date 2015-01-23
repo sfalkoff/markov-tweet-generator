@@ -27,8 +27,21 @@ def make_chains(corpus):
 def make_text(chains):
     """Takes a dictionary of markov chains and returns random text
     based off an original text."""
+    random_w = []
+    random_key = random.choice(chains.keys())
+    random_w.append(random_key)
+    random_v = random.choice(chains[random_key])
+    print random_key
+    print random_v
 
-    #no in use:
+
+
+
+
+
+
+
+    #not in use:
     # random_w = []
     # for k, v in chains.items():
     #     random_num = random.randrange(len(v))
@@ -36,13 +49,14 @@ def make_text(chains):
     # print random_w
     # should print a list of random words pulled from the dict values
 
-    random_w = ""
-    for k, v in chains.items():
-        random_num = random.randrange(len(v))
-        random_w = random_w + " " + v[random_num]
+    # #not in use
+    # random_w = ""
+    # for k, v in chains.items():
+    #     random_num = random.randrange(len(v))
+    #     random_w = random_w + " " + v[random_num]
 
-    #using the above data structure to generate random text
-    return random_w
+    # #using the above data structure to generate random text
+    # return random_w
 
 def main():
     args = sys.argv
@@ -56,7 +70,6 @@ def main():
     chain_dict = make_chains(input_text)
     random_text = make_text(chain_dict)
     # print random_text
-    print random_text
 
 if __name__ == "__main__":
     main()

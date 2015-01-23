@@ -30,65 +30,21 @@ def make_text(chains):
     random_w = []
     random_key = random.choice(chains.keys())
 
-
     key_1 = random_key[0]
     key_2 = random_key[1]
     random_w.append(key_1)
     random_w.append(key_2)
     random_v = random.choice(chains[random_key])
     random_w.append(random_v)
-
-
-    # while len(random_w) < 20:
-    #     new_key = (key_2, random_v)
-    #     new_value = random.choice(chains[new_key])
-    #     random_w.append(new_value)
-
-    # print random_w
-
-
-    # random_w = ['a', 'b', 'c', 'd', 'e', 'f']
     
-    # for i in range(6):
-    #     key_a = random_w[i+1]
-    #     key_b = random_w[i+3]
-    #     final_key = tuple(key_a, key_b)
-
-    #     # w_key = random_w[i+1:i+3]
-    #     # random_w.append(w_key)
-    # print final_key
-    # print key_a
-    # print key_b
-        # new_key = chains.get(w_key)
-        # print new_key
-        
-
+    while len(random_w) < 20:
+        key_1 = random_w[-2]
+        key_2 = random_w[-1]
+        new_key = (key_1, key_2)
+        random_v = random.choice(chains[new_key])
+        random_w.append(random_v)
 
     print random_w
-   
-
-
-
-
-
-
-
-    #not in use:
-    # random_w = []
-    # for k, v in chains.items():
-    #     random_num = random.randrange(len(v))
-    #     random_w.append(v[random_num])
-    # print random_w
-    # should print a list of random words pulled from the dict values
-
-    # #not in use
-    # random_w = ""
-    # for k, v in chains.items():
-    #     random_num = random.randrange(len(v))
-    #     random_w = random_w + " " + v[random_num]
-
-    # #using the above data structure to generate random text
-    # return random_w
 
 def main():
     args = sys.argv

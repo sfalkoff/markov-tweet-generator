@@ -3,6 +3,9 @@
 import sys
 import random
 
+import os
+import twitter
+
 def make_chains(corpus):
     """Takes an input text as a string and returns a dictionary of
     markov chains."""
@@ -37,7 +40,7 @@ def make_text(chains):
     random_v = random.choice(chains[random_key])
     random_w.append(random_v)
     
-    while len(random_w) < 20:
+    while len(random_w) < 5:
         key_1 = random_w[-2]
         key_2 = random_w[-1]
         new_key = (key_1, key_2)
@@ -63,3 +66,24 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+
+
+
+TWITTER_CONSUMER_KEY = os.environ['TWITTER_CONSUMER_KEY']
+TWITTER_CONSUMER_SECRET = os.environ['TWITTER_CONSUMER_SECRET']
+TWITTER_ACCESS_TOKEN = os.environ['TWITTER_ACCESS_TOKEN']
+TWITTER_ACCESS_TOKEN_SECRET = os.environ['TWITTER_ACCESS_TOKEN_SECRET']
+
+api = twitter.Api(
+    consumer_key=TWITTER_CONSUMER_KEY,
+    consumer_secret=TWITTER_CONSUMER_SECRET,
+    access_token_key=TWITTER_ACCESS_TOKEN,
+    access_token_secret=TWITTER_ACCESS_TOKEN_SECRET
+)
+
+print api.VerifyCredentials()
+
+#EDIT THIS LINE:
+status = api.PostUpdate("Hello")
+# print api.VerifyCredentials()

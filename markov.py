@@ -21,9 +21,7 @@ def make_chains(corpus):
             chains_dict[key] = [value]
         #No longer in use, kindof cool: chains_dict[tuple(text_file[i : i + 2])] = list([text_file[i + 2]])
 
-    # print w
-    # print chains_dict
-
+    text_file.close()
     return chains_dict
 
 def make_text(chains):

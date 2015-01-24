@@ -8,7 +8,7 @@ def make_chains(corpus):
     markov chains."""
 
     text_file = open(corpus)
-    w = text_file.read().split()
+    w = text_file.read().rstrip().split()
     chains_dict = {}
     
     for i in range(len(w) - 2):
@@ -21,8 +21,10 @@ def make_chains(corpus):
             chains_dict[key] = [value]
         #No longer in use, kindof cool: chains_dict[tuple(text_file[i : i + 2])] = list([text_file[i + 2]])
 
-    return chains_dict
+    # print w
+    # print chains_dict
 
+    return chains_dict
 
 def make_text(chains):
     """Takes a dictionary of markov chains and returns random text
@@ -44,7 +46,9 @@ def make_text(chains):
         random_v = random.choice(chains[new_key])
         random_w.append(random_v)
 
-    print random_w
+    new_text = ' '.join(random_w)
+
+    return new_text
 
 def main():
     args = sys.argv
@@ -57,7 +61,7 @@ def main():
 
     chain_dict = make_chains(input_text)
     random_text = make_text(chain_dict)
-    # print random_text
+    print random_text
 
 if __name__ == "__main__":
     main()

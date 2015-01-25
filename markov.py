@@ -96,7 +96,7 @@ def make_tweet(markov_text):
     if tweet_text[-1] not in '.?!"':
         tweet_text += "..."
 
-    # Ask user if they would like to post the text on Twitter
+    # # Ask user if they would like to post the text on Twitter
     # user_choice = raw_input("Type 'tweet' if you would like to post this on Twitter: ")
     
     # if user_choice == "tweet":

@@ -92,10 +92,8 @@ def make_tweet(markov_text):
         else:
             tweet_text = tweet_text + " " + text_list[i]
             i += 1
-      
-    return tweet_text
 
-    # user_choice = raw_input("Type 'tweet' to tweet phrase or 'new' to create new phrase")
+    user_choice = raw_input("Type 'tweet' to tweet phrase or 'new' to create new phrase")
 
     # if user_choice == "tweet":
     #     #tweet it

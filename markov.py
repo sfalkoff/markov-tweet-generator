@@ -93,30 +93,34 @@ def make_tweet(markov_text):
             tweet_text = tweet_text + " " + text_list[i]
             i += 1
 
+    if tweet_text[-1] not in '.?!"':
+        tweet_text += "..."
+
     # Ask user if they would like to post the text on Twitter
-    user_choice = raw_input("Type 'tweet' if you would like to post this on Twitter: ")
+    # user_choice = raw_input("Type 'tweet' if you would like to post this on Twitter: ")
     
-    if user_choice == "tweet":
+    # if user_choice == "tweet":
         
-        # Access secret keys
-        TWITTER_CONSUMER_KEY = os.environ['TWITTER_CONSUMER_KEY']
-        TWITTER_CONSUMER_SECRET = os.environ['TWITTER_CONSUMER_SECRET']
-        TWITTER_ACCESS_TOKEN = os.environ['TWITTER_ACCESS_TOKEN']
-        TWITTER_ACCESS_TOKEN_SECRET = os.environ['TWITTER_ACCESS_TOKEN_SECRET']
+    #     # Access secret keys
+    #     TWITTER_CONSUMER_KEY = os.environ['TWITTER_CONSUMER_KEY']
+    #     TWITTER_CONSUMER_SECRET = os.environ['TWITTER_CONSUMER_SECRET']
+    #     TWITTER_ACCESS_TOKEN = os.environ['TWITTER_ACCESS_TOKEN']
+    #     TWITTER_ACCESS_TOKEN_SECRET = os.environ['TWITTER_ACCESS_TOKEN_SECRET']
 
-        api = twitter.Api(
-            consumer_key=TWITTER_CONSUMER_KEY,
-            consumer_secret=TWITTER_CONSUMER_SECRET,
-            access_token_key=TWITTER_ACCESS_TOKEN,
-            access_token_secret=TWITTER_ACCESS_TOKEN_SECRET
-        )
+    #     api = twitter.Api(
+    #         consumer_key=TWITTER_CONSUMER_KEY,
+    #         consumer_secret=TWITTER_CONSUMER_SECRET,
+    #         access_token_key=TWITTER_ACCESS_TOKEN,
+    #         access_token_secret=TWITTER_ACCESS_TOKEN_SECRET
+    #     )
 
-        # Post to Twitter
-        status = api.PostUpdate(tweet_text)
+    #     # Post to Twitter
+    #     status = api.PostUpdate(tweet_text)
 
-    else:
-        print "That is not a valid command."
+    # else:
+    #     print "That is not a valid command."
 
+    return tweet_text
 def main():
 
     # Allows user to pass Python script and two text files to the program in the command line

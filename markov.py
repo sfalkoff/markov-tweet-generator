@@ -93,14 +93,14 @@ def make_tweet(markov_text):
             tweet_text = tweet_text + " " + text_list[i]
             i += 1
 
-    user_choice = raw_input("Type 'tweet' to tweet phrase or 'new' to create new phrase")
+    # Ask user if they would like to post the text on Twitter
+    user_choice = raw_input("Type 'tweet' if you would like to post this on Twitter: ")
+    if user_choice == "tweet":
+        print "This will go on Twitter."
+    else:
+        print "That is not a valid command."
 
-    # if user_choice == "tweet":
-    #     #tweet it
-    # else:
-    #     make_tweet(random_text)
-
-    # #return tweet_text
+    return tweet_text
 
 
     # # access secret keys

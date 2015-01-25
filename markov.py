@@ -54,7 +54,7 @@ def make_text(chains):
     random_value = random.choice(chains[random_key])
     random_word.append(random_value)
     
-    while len(random_word) < 40:
+    while len(random_word) < 30:
         # Create new key from the last two items added to random word list
         key_1 = random_word[-2]
         key_2 = random_word[-1]

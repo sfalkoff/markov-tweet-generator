@@ -54,7 +54,7 @@ def make_text(chains):
     random_value = random.choice(chains[random_key])
     random_word.append(random_value)
     
-    while len(random_word) < 30:
+    while len(random_word) < 200:
         # Create new key from the last two items added to random word list
         key_1 = random_word[-2]
         key_2 = random_word[-1]
@@ -69,8 +69,43 @@ def make_text(chains):
 
     return new_text
 
-#def tweet_mash(markov_text):
-        # # access secret keys
+def make_tweet(markov_text):
+    """Takes a random text and generates a tweet"""
+
+    # Split text (a string) into a list of words
+    text_list = markov_text.split(" ")
+
+    # Initilize empty string to build up tweet
+    tweet_text = ""
+
+    # Remove words that start with lowercase letters until reaching a capitalized word
+    while text_list[0].istitle() == False:
+         text_list.pop(0)
+
+    # While tweet text is less than 140 characters, add to tweet text
+    i = 0
+    while len(tweet_text) < 140:
+        # Stop after adding a word with sentence-end punctuation 
+        if "!" in text_list[i] or "?" in text_list[i] or "." in text_list[i]:
+            tweet_text = tweet_text + " " + text_list[i]
+            break
+        else:
+            tweet_text = tweet_text + " " + text_list[i]
+            i += 1
+      
+    return tweet_text
+
+    # user_choice = raw_input("Type 'tweet' to tweet phrase or 'new' to create new phrase")
+
+    # if user_choice == "tweet":
+    #     #tweet it
+    # else:
+    #     make_tweet(random_text)
+
+    # #return tweet_text
+
+
+    # # access secret keys
     # TWITTER_CONSUMER_KEY = os.environ['TWITTER_CONSUMER_KEY']
     # TWITTER_CONSUMER_SECRET = os.environ['TWITTER_CONSUMER_SECRET']
     # TWITTER_ACCESS_TOKEN = os.environ['TWITTER_ACCESS_TOKEN']
@@ -104,7 +139,8 @@ def main():
     # Call chain_dict and random_text to create Markov text
     chain_dict = make_chains(input_text)
     random_text = make_text(chain_dict)
-    print random_text
+    tweet_mash = make_tweet(random_text)
+    print tweet_mash
 
 if __name__ == "__main__":
     main()

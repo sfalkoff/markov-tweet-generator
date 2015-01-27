@@ -133,15 +133,14 @@ def main():
     file_2 = open(filename2)
     input_text = input_text + file_2.read()
 
-    # Close both files
-    file_1.close()
-    file_2.close()
-
     # Call chain_dict and random_text to create Markov text
     chain_dict = make_chains(input_text)
     random_text = make_text(chain_dict)
     tweet_mash = make_tweet(random_text)
-    print tweet_mash
+
+    # Close both files
+    file_1.close()
+    file_2.close()
 
 if __name__ == "__main__":
     main()

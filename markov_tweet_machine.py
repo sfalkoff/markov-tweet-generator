@@ -92,6 +92,7 @@ def make_tweet(markov_text):
             tweet_text = tweet_text + " " + text_list[i]
             i += 1
 
+    # Add ellipses if the tweet does not aleady have punctuation at the end
     if tweet_text[-1] not in '.?!"':
         tweet_text += "..."
 
@@ -120,7 +121,7 @@ def make_tweet(markov_text):
         status = api.PostUpdate(tweet_text)
 
     else:
-        print "That is not a valid command."
+        print "That is not a valid command. Please run the script again if you would like to make a new tweet."
 
 def main():
 
@@ -133,7 +134,7 @@ def main():
     file_2 = open(filename2)
     input_text = input_text + file_2.read()
 
-    # Call chain_dict and random_text to create Markov text
+    # Call chain_dict, random_text, and tweet_mash to create Markov text
     chain_dict = make_chains(input_text)
     random_text = make_text(chain_dict)
     tweet_mash = make_tweet(random_text)
